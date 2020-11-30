@@ -17,7 +17,7 @@ public class WebController {
 
     public void callCreateEmployee(Context ctx) {
         
-        if (ctx.cookieStore("security")!=null){ 
+     
             
                 String firstName = ctx.formParam("firstName");
                 String lastName = ctx.formParam("lastName");
@@ -34,10 +34,8 @@ public class WebController {
                     ctx.redirect("employee.html");
                 }
             
-        }
-        else{
-            ctx.redirect("login.html");
-        }
+        
+       
     }
 
     public void callCreateAccount(Context ctx) {
