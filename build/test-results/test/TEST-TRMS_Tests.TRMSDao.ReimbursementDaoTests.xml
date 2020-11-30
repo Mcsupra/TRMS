@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TRMS_Tests.TRMSDao.ReimbursementDaoTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:59:04" hostname="DESKTOP-VLH52C9" time="0.339">
+  <properties/>
+  <testcase name="deleteReimbursementTest" classname="TRMS_Tests.TRMSDao.ReimbursementDaoTests" time="0.039"/>
+  <testcase name="selectReimbursementTest" classname="TRMS_Tests.TRMSDao.ReimbursementDaoTests" time="0.039"/>
+  <testcase name="insertReimbursementTest" classname="TRMS_Tests.TRMSDao.ReimbursementDaoTests" time="0.067"/>
+  <testcase name="updateReimbursementTest" classname="TRMS_Tests.TRMSDao.ReimbursementDaoTests" time="0.154"/>
+  <testcase name="selectAllReimbursementsTest" classname="TRMS_Tests.TRMSDao.ReimbursementDaoTests" time="0.039"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

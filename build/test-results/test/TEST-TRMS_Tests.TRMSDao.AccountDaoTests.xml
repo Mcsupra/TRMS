@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TRMS_Tests.TRMSDao.AccountDaoTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:59:03" hostname="DESKTOP-VLH52C9" time="1.133">
+  <properties/>
+  <testcase name="selectAccountTest" classname="TRMS_Tests.TRMSDao.AccountDaoTests" time="0.921"/>
+  <testcase name="insertAccountTest" classname="TRMS_Tests.TRMSDao.AccountDaoTests" time="0.083"/>
+  <testcase name="updateAccountTest" classname="TRMS_Tests.TRMSDao.AccountDaoTests" time="0.042"/>
+  <testcase name="selectAllEmployeesTest" classname="TRMS_Tests.TRMSDao.AccountDaoTests" time="0.041"/>
+  <testcase name="deleteAccountTest" classname="TRMS_Tests.TRMSDao.AccountDaoTests" time="0.044"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

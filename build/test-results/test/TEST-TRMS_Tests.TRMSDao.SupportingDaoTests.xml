@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TRMS_Tests.TRMSDao.SupportingDaoTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:59:05" hostname="DESKTOP-VLH52C9" time="0.198">
+  <properties/>
+  <testcase name="deleteSupportingDocTest" classname="TRMS_Tests.TRMSDao.SupportingDaoTests" time="0.041"/>
+  <testcase name="selectAllDocumentsTest" classname="TRMS_Tests.TRMSDao.SupportingDaoTests" time="0.039"/>
+  <testcase name="insertSupportingTest" classname="TRMS_Tests.TRMSDao.SupportingDaoTests" time="0.041"/>
+  <testcase name="selectSupportingDocTest" classname="TRMS_Tests.TRMSDao.SupportingDaoTests" time="0.038"/>
+  <testcase name="updateSupportingDocTest" classname="TRMS_Tests.TRMSDao.SupportingDaoTests" time="0.038"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

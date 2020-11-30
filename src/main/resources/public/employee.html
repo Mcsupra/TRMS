@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <form method="get" action="/index.html">
+        <button type="submit">Main Menu</button>
+    </form>
+    <form method="get" action="/logout">
+        <button type="submit">Log Out</button>
+      </form>
+    <form action="/employee" method="POST">
+        <input type="firstName" name="firstName" placeholder="first name">
+        <input type="lastName" name="lastName" placeholder="last name">
+        <label for="eventType">Event Type:</label>
+        <select id="title" name="title">
+          <option value="ASSOCIATE">Associate</option>
+          <option value="SUPERVISOR">Supervisor</option>
+          <option value="DEPARTMENT_HEAD">Department Head</option>
+          <option value="BENCO">Benefits Coordinator</option>
+          <option value="BENCO_SUPERVISOR">Benefits Coordinator Supervisor</option>
+          <option value="BENCO_DEPARTMENT_HEAD">Benefits Coordinator Department Head</option>
+        </select>  
+        <input type="department" name="department" placeholder="department">
+        <button type="submit">Create Employee</button>
+        <script src='error.js'></script>
+    </form>
+    <p id=error></p>
+</body>
+</html>
+

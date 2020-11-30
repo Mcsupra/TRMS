@@ -1,0 +1,44 @@
+body{
+    background-color: darkslategrey;
+    color: black;
+}
+
+button{
+    color: black;
+}
+
+select{
+    color: black;
+}
+h1{
+    text-align: center;
+    color: antiquewhite;
+    font-size: 75px;
+}
+
+
+input{
+    width: 10%; 
+    padding: 5px;
+    margin-top: 200px;
+    margin-left: 100px;
+}
+
+select{
+    width: 10%; 
+    padding: 5px;
+    margin-top: 200px;
+}
+
+p{
+    color: antiquewhite;
+    text-align: center;
+    width: 50%; 
+    padding: 0px;
+    margin-top: 50px;
+    margin-left: 500px;
+}
+
+label{
+    margin-left: 50px;
+}

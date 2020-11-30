@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TRMS_Tests.TRMSDao.RequestDaoTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:59:05" hostname="DESKTOP-VLH52C9" time="0.329">
+  <properties/>
+  <testcase name="selectRequestTest" classname="TRMS_Tests.TRMSDao.RequestDaoTests" time="0.043"/>
+  <testcase name="selectAllRequestsTest" classname="TRMS_Tests.TRMSDao.RequestDaoTests" time="0.039"/>
+  <testcase name="insertRequestTest" classname="TRMS_Tests.TRMSDao.RequestDaoTests" time="0.044"/>
+  <testcase name="updateRequestTest" classname="TRMS_Tests.TRMSDao.RequestDaoTests" time="0.158"/>
+  <testcase name="deleteRequestTest" classname="TRMS_Tests.TRMSDao.RequestDaoTests" time="0.042"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
