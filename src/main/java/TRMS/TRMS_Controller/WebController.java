@@ -18,7 +18,7 @@ public class WebController {
     public void callCreateEmployee(Context ctx) {
         
         if (ctx.cookieStore("security")!=null){ 
-            if(AuthController.loggedIn.get(ctx.cookieStore("security")).getEmpId() == -99){
+            
                 String firstName = ctx.formParam("firstName");
                 String lastName = ctx.formParam("lastName");
                 Title title = Title.valueOf(ctx.formParam("title"));
@@ -33,9 +33,7 @@ public class WebController {
                     ctx.status(401);
                     ctx.redirect("employee.html");
                 }
-            }else{
-                ctx.redirect("index.html");
-            }
+            
         }
         else{
             ctx.redirect("login.html");
