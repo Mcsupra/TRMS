@@ -11,7 +11,7 @@ public class ConnectionUtil {
 	public Connection createConnection() throws SQLException {
 		
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/TRMS?", "postgres", "password");
+			Connection conn = DriverManager.getConnection("jdbc:postgresql://13.92.230.192/TRMS?", "postgres", "password");
 			return conn;
 		}
 		catch (SQLException e) {
