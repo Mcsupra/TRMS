@@ -7,7 +7,7 @@ function AJAX(){
     //AJAX - Asynchronous JavaScript and XML
     //Initialize xhr object
     let xhr = new XMLHttpRequest();
-    const url = "http://localhost:9091/request-response.html/";
+    const url = "request-response.html";
     //sets up ready state handler
     xhr.onreadystatechange = function () {
         switch (xhr.readyState) {
