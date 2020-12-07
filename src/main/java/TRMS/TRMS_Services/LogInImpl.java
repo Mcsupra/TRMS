@@ -19,6 +19,7 @@ public class LogInImpl implements LogIn {
         public boolean createEmployee(String firstName, String lastName, Title title, int department) {
             try{
                 Employee newEmp = new Employee(firstName,lastName,title,department);
+                System.out.println(newEmp);
                 currEmp.insert(newEmp);
                 return true;
             }catch (SQLException e) {

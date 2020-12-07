@@ -28,7 +28,7 @@ public class AccountsDao implements CRUD<Account> {
                 + "values(?,?,?);";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1,acct.getUsername());
             stmt.setString(2,acct.getPassphrase());
             stmt.setInt(3, acct.getEmpId());

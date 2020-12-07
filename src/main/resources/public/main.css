@@ -8,20 +8,24 @@ button{
 }
 
 select{
+    width:40%;
     color: black;
 }
 h1{
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     color: antiquewhite;
     font-size: 75px;
 }
 
 
-input{
+.input{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 30%;
     padding: 5px;
 }
 
@@ -45,6 +49,39 @@ label{
 }
 
 button{
-    margin: 100px;
+
+    display: block;
+    margin: 10px;
     
+}
+
+.login{
+    padding-left: 800px;
+    padding-top: 200px;
+    text-align: center;
+    display: inline-block;
+}
+
+form {
+    
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.center{
+    position: fixed;
+    top: 20%;
+    left: 25%;
+}
+
+.request{
+    margin-left: auto;
+    margin-right: auto;
 }

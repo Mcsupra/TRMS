@@ -14,7 +14,7 @@ public interface ServerDriver {
     public static void main(String[] args) {
         
         Javalin app = Javalin.create(
-                config -> {config.addStaticFiles("/public"); }).start(9091);
+                config -> {config.addStaticFiles("/public");}).start(9091);
                 
         app.get("/hello", ctx -> ctx.html("Hello World"));
         app.get("", ctx -> ctx.redirect("login.html"));

@@ -29,7 +29,7 @@ public class SupportingDao implements CRUD<Supporting> {
 		+ "values(?,?,?);"; 
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1,sup.getFileType());
             stmt.setBytes(2,sup.getFile());
             stmt.setInt(3,sup.getReqId());
@@ -51,7 +51,7 @@ public class SupportingDao implements CRUD<Supporting> {
         String sql = "Select * FROM supportingdocs where reqId = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,reqId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -79,7 +79,7 @@ public class SupportingDao implements CRUD<Supporting> {
 			
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Supporting returnedDocs = new Supporting(rs.getInt(1),
@@ -105,7 +105,7 @@ public class SupportingDao implements CRUD<Supporting> {
             //Prepared SQL statement
 		    String sql = "UPDATE supportingdocs SET file_type = ? WHERE reqId = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, sup.getFileType());
             stmt.setInt(2, sup.getDocId());
@@ -125,7 +125,7 @@ public class SupportingDao implements CRUD<Supporting> {
         try(Connection conn = connUtil.createConnection()){
             String sql = "DELETE FROM supportingdocs WHERE reqId = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setInt(1, reqId);
             stmt.executeUpdate();

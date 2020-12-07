@@ -1,8 +1,11 @@
 .table-style {
+    color: #d6e9ebc2;
     border-style: solid;
     border-collapse: collapse;
     border-width: 5px;
-    margin: 0px;
+    padding: 5px;
+    padding-left: auto;
+    padding-right: auto;
 }
 
 .hide{

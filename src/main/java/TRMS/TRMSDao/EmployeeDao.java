@@ -34,7 +34,7 @@ public class EmployeeDao implements CRUD<Employee> {
                 + "values(?,?,?::title,?,?);";
 
 			try (Connection conn = connUtil.createConnection()){
-				stmt = connUtil.createConnection().prepareStatement(sql);
+				stmt = conn.prepareStatement(sql);
 				stmt.setString(1,emp.getFirstName());
 				stmt.setString(2,emp.getLastName());
 				stmt.setString(3,emp.getTitle().toString());
@@ -57,7 +57,7 @@ public class EmployeeDao implements CRUD<Employee> {
         String sql = "Select * from EMPLOYEE where empid = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,empId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -86,7 +86,7 @@ public class EmployeeDao implements CRUD<Employee> {
 		String sql = "SELECT * FROM employee;";
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Employee returnedEmp = new Employee(rs.getInt(1),
@@ -114,7 +114,7 @@ public class EmployeeDao implements CRUD<Employee> {
             String sql = "UPDATE employee SET first_name = ?, last_name = ?, title = ?::title, balance = ?, department = ?"
     			+ " WHERE empid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, emp.getFirstName());
             stmt.setString(2, emp.getLastName());
@@ -138,7 +138,7 @@ public class EmployeeDao implements CRUD<Employee> {
             String sql = "UPDATE employee SET balance = ?"
     			+ " WHERE empid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setDouble(1, emp.getBalance());
             stmt.setInt(2, emp.getEmpId());
@@ -158,7 +158,7 @@ public class EmployeeDao implements CRUD<Employee> {
         try(Connection conn = connUtil.createConnection()){
             String sql = "DELETE FROM employee WHERE empid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setInt(1, empId);
             stmt.executeUpdate();
