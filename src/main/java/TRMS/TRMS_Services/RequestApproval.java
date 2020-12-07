@@ -15,11 +15,9 @@ import TRMS.TRMSPojos.Request;
 import TRMS.TRMSPojos.Reimbursement.status;
 import TRMS.TRMSPojos.Request.CurrentStatus;
 import TRMS.TRMSPojos.Request.eventType;
-import io.javalin.http.Context;
-
 
 public class RequestApproval {
-    Context ctx;
+
     private static Logger log = Logger.getLogger("Web"); 
     private RequestDao getReq = new RequestDao();
     private Request currReq = new Request();
@@ -28,16 +26,16 @@ public class RequestApproval {
     public EmployeeDao getEmpReq = new EmployeeDao();
     public Employee empReq = new Employee();
 
-    public boolean createRequest(String eventDate, String eventTime, String eventLoc, eventType eventType, Double eventCost, int empId){
+    public int createRequest(String eventDate, String eventTime, String eventLoc, eventType eventType, Double eventCost, int empId){
         Request newReq = new Request(eventDate, eventTime, eventLoc, eventType, eventCost);
         try {
             dateCheck(newReq);
-            getReq.insertWithEmpId(newReq, empId);
-            return true;
+            int reqId = getReq.insertWithEmpId(newReq, empId);
+            return reqId;
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;
+            return 0;
         }
     }
     
@@ -117,7 +115,6 @@ public class RequestApproval {
                     break;
                 case BENCO:
                     currReq.setBenco(true);
-                    currReq.setCurrentStatus(CurrentStatus.APPROVED);
                     getReq.updateBencoStatus(currReq);
                     break;
                 default:
@@ -147,7 +144,6 @@ public class RequestApproval {
                     break;
                 case BENCO:
                     currReq.setBenco(false);
-                    currReq.setCurrentStatus(CurrentStatus.DENIED);
                     getReq.updateBencoStatus(currReq);
                     break;
                 default:
@@ -284,6 +280,31 @@ public class RequestApproval {
             // Auto-generated catch block
             e.printStackTrace();
             return true;
+        }
+    }
+
+    public void finalApproval(Reimbursement reimbur){
+        try {
+            newReimb = addReimb.selectByReqId(reimbur.getReqId());
+            currReq = getReq.select(reimbur.getReqId());
+            empReq = getEmpReq.select(currReq.getEmpId());
+            if (reimbur.getActualAmount() == 0){
+                reimbur.setStatus(status.DENIED);
+                currReq.setCurrentStatus(CurrentStatus.DENIED);
+                empReq.setBalance(empReq.getBalance()+newReimb.getProjectedAmount());
+            }
+            else{
+                currReq.setCurrentStatus(CurrentStatus.APPROVED);
+                reimbur.setStatus(status.APPROVED);
+                empReq.setBalance(empReq.getBalance()+newReimb.getProjectedAmount()-reimbur.getActualAmount());
+            }
+            reimbur.setReimburId(newReimb.getReimburId());
+            addReimb.update(reimbur);
+            getReq.updateReqStatus(currReq);
+            getEmpReq.update(empReq);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 

@@ -24,7 +24,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
     }
 
     @Override
-    public boolean insert(Reimbursement reimb) throws SQLException {
+    public int insert(Reimbursement reimb) throws SQLException {
         
         //Prepared SQL statement prototype
         String sql = "INSERT into REIMBURSEMENT (reimbur_status, projected_amount, actual_amount, reqid) "
@@ -39,12 +39,12 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
 
             stmt.executeUpdate();
             
-            return true;
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;		
+            return 0;		
         }
     }
 
@@ -132,6 +132,8 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
     @Override
     public boolean update(Reimbursement reimb) throws SQLException {
         
+        System.out.println(reimb);
+
         try(Connection conn = connUtil.createConnection()){ 
             //Prepared SQL statement
             String sql = "UPDATE reimbursement SET reimbur_status = ?::reimbur_status, projected_amount = ?, actual_amount = ?"

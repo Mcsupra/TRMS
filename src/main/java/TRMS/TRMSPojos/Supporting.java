@@ -5,19 +5,29 @@ import java.util.Objects;
 public class Supporting {
     private int docId;
     private String fileType;
-
+    private byte[] file;
+    private int reqId;
+  
 
     public Supporting() {
     }
 
-    /**
-     * 
-     * @param docId
-     * @param fileType
-     */
-    public Supporting(int docId, String fileType) {
+    public Supporting( String fileType, byte[] file, int reqId) {
+        this.fileType = fileType;
+        this.file = file;
+        this.reqId = reqId;
+    }
+
+    public Supporting( String fileType, int reqId) {
+        this.fileType = fileType;
+        this.reqId = reqId;
+    }
+
+    public Supporting(int docId, String fileType, byte[] file, int reqId) {
         this.docId = docId;
         this.fileType = fileType;
+        this.file = file;
+        this.reqId = reqId;
     }
 
     public int getDocId() {
@@ -36,6 +46,22 @@ public class Supporting {
         this.fileType = fileType;
     }
 
+    public byte[] getFile() {
+        return this.file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public int getReqId() {
+        return this.reqId;
+    }
+
+    public void setReqId(int reqId) {
+        this.reqId = reqId;
+    }
+
     public Supporting docId(int docId) {
         this.docId = docId;
         return this;
@@ -43,6 +69,16 @@ public class Supporting {
 
     public Supporting fileType(String fileType) {
         this.fileType = fileType;
+        return this;
+    }
+
+    public Supporting file(byte[] file) {
+        this.file = file;
+        return this;
+    }
+
+    public Supporting reqId(int reqId) {
+        this.reqId = reqId;
         return this;
     }
 
@@ -54,12 +90,12 @@ public class Supporting {
             return false;
         }
         Supporting supporting = (Supporting) o;
-        return docId == supporting.docId && Objects.equals(fileType, supporting.fileType);
+        return docId == supporting.docId && Objects.equals(fileType, supporting.fileType) && Objects.equals(file, supporting.file) && reqId == supporting.reqId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(docId, fileType);
+        return Objects.hash(docId, fileType, file, reqId);
     }
 
     @Override
@@ -67,7 +103,10 @@ public class Supporting {
         return "{" +
             " docId='" + getDocId() + "'" +
             ", fileType='" + getFileType() + "'" +
+            ", file='" + getFile() + "'" +
+            ", reqId='" + getReqId() + "'" +
             "}";
     }
 
+    
 }

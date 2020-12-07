@@ -23,39 +23,43 @@ public class SupportingDao implements CRUD<Supporting> {
     }
     
     @Override
-    public boolean insert(Supporting sup) throws SQLException {
+    public int insert(Supporting sup) throws SQLException {
         //Prepared SQL statement prototype
-        String sql = "INSERT into supportingdocs (docid, file_type)"
-		+ "values(?,?);"; 
+        String sql = "INSERT into supportingdocs (file_type, file, reqId)"
+		+ "values(?,?,?);"; 
         
         try (Connection conn = connUtil.createConnection()){
             stmt = connUtil.createConnection().prepareStatement(sql);
-            stmt.setInt(1,sup.getDocId());
-            stmt.setString(2,sup.getFileType());
+            stmt.setString(1,sup.getFileType());
+            stmt.setBytes(2,sup.getFile());
+            stmt.setInt(3,sup.getReqId());
+            
 
             stmt.executeUpdate();
             
-            return true;
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;		
+            return 0;		
         }
     }
 
     @Override
-    public Supporting select(int docId) throws SQLException {
+    public Supporting select(int reqId) throws SQLException {
         //Prepared SQL statement prototype
-        String sql = "Select * FROM supportingdocs where docid = ?;";
+        String sql = "Select * FROM supportingdocs where reqId = ?;";
 
         try (Connection conn = connUtil.createConnection()){
             stmt = connUtil.createConnection().prepareStatement(sql);
-            stmt.setInt(1,docId);
+            stmt.setInt(1,reqId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
             
             Supporting returnedDoc = new Supporting(rs.getInt(1),
-                                                rs.getString(2));
+                                                rs.getString(2),
+                                                rs.getBytes(3),
+                                                rs.getInt(4));
                                         
 
             return returnedDoc;
@@ -79,7 +83,9 @@ public class SupportingDao implements CRUD<Supporting> {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Supporting returnedDocs = new Supporting(rs.getInt(1),
-                                                rs.getString(2));
+                                                        rs.getString(2),
+                                                        rs.getBytes(3),
+                                                        rs.getInt(4));
 					
 				allEmp.add(returnedDocs);
 					
@@ -97,7 +103,7 @@ public class SupportingDao implements CRUD<Supporting> {
         
         try(Connection conn = connUtil.createConnection()){ 
             //Prepared SQL statement
-		    String sql = "UPDATE supportingdocs SET file_type = ? WHERE docid = ?;";
+		    String sql = "UPDATE supportingdocs SET file_type = ? WHERE reqId = ?;";
 
             stmt = connUtil.createConnection().prepareStatement(sql);
             
@@ -115,13 +121,13 @@ public class SupportingDao implements CRUD<Supporting> {
     }
 
     @Override
-    public boolean delete(int docId) throws SQLException {
+    public boolean delete(int reqId) throws SQLException {
         try(Connection conn = connUtil.createConnection()){
-            String sql = "DELETE FROM supportingdocs WHERE docid = ?;";
+            String sql = "DELETE FROM supportingdocs WHERE reqId = ?;";
 
             stmt = connUtil.createConnection().prepareStatement(sql);
             
-            stmt.setInt(1, docId);
+            stmt.setInt(1, reqId);
             stmt.executeUpdate();
             
             return true;

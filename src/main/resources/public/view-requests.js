@@ -83,7 +83,8 @@ let addRow = function (myRequest) {
     if (myRequest.supervisor == false && myRequest.currentStatus != 'DENIED'){
         supervisor.innerHTML =
         '<form action="approve-request" method="POST">'
-            +'<input name="reqId" id="reqId" value='+myRequest.reqId+'></input>'
+            +'<input name="reqId" class="hide" id="reqId" value='+myRequest.reqId+'></input>'
+            +'<input name="title" class="hide" id="title" value="SUPERVISOR"></input>'
             +'<label for="approval">Approval:</label>'
                 +'<select id="approval" name="approval">'
                     +'<option value="APPROVE">Approve</option>'
@@ -94,14 +95,17 @@ let addRow = function (myRequest) {
         supervisor.innerHTML = myRequest.supervisor; 
     }
     if (myRequest.currentStatus == 'DENIED'){
-        dept_head.innerHTML = 'false';
+        dept_head.innerHTML = false;
     } 
-    else if (myRequest.deptHead == false){
+    else if (myRequest.supervisor == false){
+        dept_head.innerHTML = myRequest.deptHead;
+    }else if (myRequest.supervisor == true && myRequest.deptHead == true){
         dept_head.innerHTML = myRequest.deptHead;
     }else{
         dept_head.innerHTML = 
         '<form action="approve-request" method="POST">'
-            +'<input name="reqId" id="reqId" value='+myRequest.reqId+'></input>'
+            +'<input name="reqId" class="hide" id="reqId" value='+myRequest.reqId+'></input>'
+            +'<input name="title" class="hide" id="title" value="DEPARTMENT_HEAD"></input>'
             +'<label for="approval">Approval:</label>'
                 +'<select id="approval" name="approval">'
                     +'<option value="APPROVE">Approve</option>'
@@ -110,24 +114,17 @@ let addRow = function (myRequest) {
             +'<button type="submit">Submit</button>';
     }
     if (myRequest.currentStatus == 'DENIED'){
-        benco.innerHTML = 'false';
+        benco.innerHTML = false;
     }  
     else if (myRequest.deptHead == false){
         benco.innerHTML = myRequest.benco;
     }else{
-        benco.innerHTML = 
-        '<form action="approve-request" method="POST">'
-            +'<input name="reqId" id="reqId" value='+myRequest.reqId+'></input>'
-            +'<label for="approval">Approval:</label>'
-                +'<select id="approval" name="approval">'
-                    +'<option value="APPROVE">Approve</option>'
-                    +'<option value="DENY">Deny</option>'
-            +'</select>'
-            +'<button type="submit">Submit</button>';
+        benco.innerHTML = myRequest.benco;
     }
+    
     reqStatusCol.innerHTML = myRequest.currentStatus;
     addDocsCol.innerHTML = myRequest.additional_docs;
-    empIdCol.innerHTML = myRequest.empId;
+    empIdCol.innerHTML = `<a href="message/${myRequest.reqId}">`+myRequest.empId+`</a>`;
 
     reqIdCol.className = "table-style";
     reqDateCol.className = "table-style";

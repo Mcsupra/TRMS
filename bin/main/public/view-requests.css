@@ -2,9 +2,10 @@
     border-style: solid;
     border-collapse: collapse;
     border-width: 5px;
-    margin: 5px;
+    margin: 0px;
 }
 
-input{
+.hide{
     display: none;
 }
+

@@ -28,7 +28,7 @@ public class EmployeeDao implements CRUD<Employee> {
      * @return true pending success
      */
     @Override
-    public boolean insert(Employee emp) throws SQLException {
+    public int insert(Employee emp) throws SQLException {
         
         String sql = "INSERT into EMPLOYEE (first_name, last_name, title, balance, department) "
                 + "values(?,?,?::title,?,?);";
@@ -43,11 +43,11 @@ public class EmployeeDao implements CRUD<Employee> {
                 
 				stmt.executeUpdate();
 				
-				return true;
+				return 1;
 			} catch (SQLException e) {
 				e.printStackTrace();
 				log.error("SQLException:" + e);
-				return false;		
+				return 0;		
 			}
     }
 

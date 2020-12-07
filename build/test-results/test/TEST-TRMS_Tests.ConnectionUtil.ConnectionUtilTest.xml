@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TRMS_Tests.ConnectionUtil.ConnectionUtilTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:59:04" hostname="DESKTOP-VLH52C9" time="0.032">
+<testsuite name="TRMS_Tests.ConnectionUtil.ConnectionUtilTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-04T23:37:30" hostname="DESKTOP-VLH52C9" time="0.218">
   <properties/>
-  <testcase name="test" classname="TRMS_Tests.ConnectionUtil.ConnectionUtilTest" time="0.032"/>
+  <testcase name="test" classname="TRMS_Tests.ConnectionUtil.ConnectionUtilTest" time="0.218"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

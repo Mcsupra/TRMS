@@ -19,7 +19,8 @@ public class LogInImpl implements LogIn {
         public boolean createEmployee(String firstName, String lastName, Title title, int department) {
             try{
                 Employee newEmp = new Employee(firstName,lastName,title,department);
-                return currEmp.insert(newEmp);
+                currEmp.insert(newEmp);
+                return true;
             }catch (SQLException e) {
 				e.printStackTrace();
 				log.error("SQLException:" + e);
@@ -30,7 +31,8 @@ public class LogInImpl implements LogIn {
     @Override
     public boolean createAccount(String username, String password, int empId) {
         try{
-            return currAcct.insert(new Account(username,password,empId));
+            currAcct.insert(new Account(username,password,empId));
+            return true; 
         }catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);

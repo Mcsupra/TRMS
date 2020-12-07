@@ -23,7 +23,7 @@ public class AccountsDao implements CRUD<Account> {
     }
 
     @Override
-    public boolean insert(Account acct) throws SQLException {
+    public int insert(Account acct) throws SQLException {
         String sql = "INSERT into accounts (username, passphrase, empid) "
                 + "values(?,?,?);";
 
@@ -35,11 +35,11 @@ public class AccountsDao implements CRUD<Account> {
 
             stmt.executeUpdate();
             
-            return true;
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;		
+            return 0;		
         }
     }
 

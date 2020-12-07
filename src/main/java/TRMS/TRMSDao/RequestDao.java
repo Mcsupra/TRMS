@@ -27,12 +27,12 @@ public class RequestDao implements CRUD<Request> {
     }
 
     @Override
-    public boolean insert(Request req) throws SQLException {
+    public int insert(Request req) throws SQLException {
         
         //Prepared SQL statement prototype
         String sql = "INSERT into Requests (event_date, event_time, event_loc, event_type, event_cost, request_date,"
         +"supervisor, dept_head, benco, request_status, additional_docs) "
-		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?);";
+		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?) RETURNING reqid;";
         
         try (Connection conn = connUtil.createConnection()){
             stmt = connUtil.createConnection().prepareStatement(sql);
@@ -48,22 +48,23 @@ public class RequestDao implements CRUD<Request> {
             stmt.setString(10, req.getCurrentStatus().toString());
 			stmt.setBoolean(11, req.getAdditional_docs());
 
-            stmt.executeUpdate();
-            
-            return true;
+            ResultSet rs = stmt.executeQuery();
+            rs. next();
+
+            return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;		
+            return 0;		
         }
     }
 
-    public boolean insertWithEmpId(Request req,int empId) throws SQLException {
+    public int insertWithEmpId(Request req,int empId) throws SQLException {
         
         //Prepared SQL statement prototype
         String sql = "INSERT into Requests (event_date, event_time, event_loc, event_type, event_cost, request_date,"
         +"supervisor, dept_head, benco, request_status, additional_docs,empid) "
-		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?,?);";
+		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?,?) RETURNING reqid;";
         
         try (Connection conn = connUtil.createConnection()){
             stmt = connUtil.createConnection().prepareStatement(sql);
@@ -80,13 +81,15 @@ public class RequestDao implements CRUD<Request> {
             stmt.setBoolean(11, req.getAdditional_docs());
             stmt.setInt(12, empId);
 
-            stmt.executeUpdate();
-            
-            return true;
+            ResultSet rs = stmt.executeQuery();
+            rs. next();
+
+            return rs.getInt(1);
+
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("SQLException:" + e);
-            return false;		
+            return 0;		
         }
     }
 

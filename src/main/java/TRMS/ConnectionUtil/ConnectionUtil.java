@@ -11,7 +11,7 @@ public class ConnectionUtil {
 	public Connection createConnection() throws SQLException {
 		
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:postgresql://trms-postrges.postgres.database.azure.com:5432/TRMS?user=mzide@trms-postrges&password=yYkRRuaF2c9P&sslmode=require");
+			Connection conn = DriverManager.getConnection("postgres://nsomjhaz:tkSlT_C7QXRSmAtyboLUCYu4VX0XHzVk@suleiman.db.elephantsql.com:5432/nsomjhaz");
 			return conn;
 		}
 		catch (SQLException e) {

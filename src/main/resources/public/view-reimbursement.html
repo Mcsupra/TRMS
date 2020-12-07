@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../view-requests.css'>
+</head>
+<body>
+    <h1>Reimbursement for Request <span id="thisReqHeader"></span></h1>
+    <form method="get" action="/index-assoc.html">
+        <button type="submit">Main Menu</button>
+    </form>
+    <form method="get" action="/logout">
+        <button type="submit">Log Out</button>
+    </form>
+    <table id="request-table" class="table-style">
+        <tr class="table-style">
+            <th class="table-style">Reimbursement ID</th>
+            <th class="table-style">Status</th>
+            <th class="table-style">Projected Amount</th>
+            <th class="table-style">Actual Amount</th>
+            <th class="table-style">Request ID</th>
+        </tr>
+    </table>
+    <script src="../view-reimbursement.js" type="text/javascript"></script>
+</body>
+</html>

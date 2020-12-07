@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface CRUD<T> {
 
-    public boolean insert(T t) throws SQLException;
+    public int insert(T t) throws SQLException;
 		
 	public T select(int t) throws SQLException;
 		

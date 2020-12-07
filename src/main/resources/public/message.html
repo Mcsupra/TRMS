@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='../main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../view-requests.css'>
+</head>
+<body>
+  <h1>Send a Message</h1>
+  <div class="row">
+    <div class="col-sm-2"> 
+      <form method="get" action="/index-assoc.html">
+        <div class="pull-left"> 
+          <div class="btn-group">
+              <button type="submit">Main Menu (Assoc)</button>
+          </div> 
+        </div>
+      </form>
+      <form method="get" action="/index-benco.html">
+        <div class="pull-left"> 
+          <div class="btn-group">
+              <button type="submit">Main Menu (Benco)</button>
+          </div> 
+        </div>
+      </form> 
+      <form method="get" action="/index-manager.html">
+        <div class="pull-left"> 
+          <div class="btn-group">
+              <button type="submit">Main Menu (Manager)</button>
+          </div> 
+        </div>
+      </form>  
+      <form method="get" action="/logout"class="top-right">
+        <div class="pull-left"> 
+          <div class="btn-group">
+            <button type="submit">Log Out</button>
+          </div> 
+        </div> 
+      </form>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-sm-10"> 
+        <form method="get" action="/send-message.html">
+            <div class="pull-left"> 
+              <div class="btn-group">
+                  <button type="submit">Send a message</button>
+              </div> 
+            </div>
+          </form> 
+            <table id="request-table" class="table-style">
+                <tr class="table-style">
+                    <th class="table-style">From Employee</th>
+                    <th class="table-style">To Employee</th>
+                    <th class="table-style">Message</th>
+                </tr>
+            </table>
+        </div>
+    </div> 
+    <script src="../message.js" type="text/javascript"></script>  
+</body>
+</html>

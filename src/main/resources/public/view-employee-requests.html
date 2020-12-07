@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='view-requests.css'>
+</head>
+<body>
+    <h1>Your Requests</h1>
+    <form method="get" action="/index-assoc.html">
+        <button type="submit">Main Menu</button>
+    </form>
+    <form method="get" action="/logout">
+        <button type="submit">Log Out</button>
+    </form>
+    <table id="request-table" class="table-style">
+        <tr class="table-style">
+            <th class="table-style">Request ID</th>
+            <th class="table-style">Request Date</th>
+            <th class="table-style">Event Date</th>
+            <th class="table-style">Event Time</th>
+            <th class="table-style">Event Location</th>
+            <th class="table-style">Event Type</th>
+            <th class="table-style">Event Cost</th>
+            <th class="table-style">Supervisor</th>
+            <th class="table-style">Department Head</th>
+            <th class="table-style">Benco</th>
+            <th class="table-style">Request Status</th>
+            <th class="table-style">Additional Documents</th>
+            <th class="table-style">Employee ID</th>
+        </tr>
+    </table>
+    <script src="view-employee-requests.js" type="text/javascript"></script>
+</body>
+</html>
