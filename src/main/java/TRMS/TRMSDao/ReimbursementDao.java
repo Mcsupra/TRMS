@@ -31,7 +31,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
 		+ "values(?::reimbur_status,?,?,?);";
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1,reimb.getStatus().toString());
             stmt.setDouble(2,reimb.getProjectedAmount());
             stmt.setDouble(3,reimb.getActualAmount());
@@ -55,7 +55,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
         String sql = "Select * FROM reimbursement where reimburid = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,remibId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -81,7 +81,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
         String sql = "Select * FROM reimbursement where reqid = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,reqId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -110,7 +110,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
         List<Reimbursement> allReimbur = new ArrayList<>();
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Reimbursement returnedReimbur = new Reimbursement(rs.getInt(1),
@@ -139,7 +139,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
             String sql = "UPDATE reimbursement SET reimbur_status = ?::reimbur_status, projected_amount = ?, actual_amount = ?"
             + " WHERE reimburid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, reimb.getStatus().toString());
             stmt.setDouble(2, reimb.getProjectedAmount());
@@ -162,7 +162,7 @@ public class ReimbursementDao implements CRUD<Reimbursement> {
         try(Connection conn = connUtil.createConnection()){
             String sql = "DELETE FROM reimbursement WHERE reimburid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setInt(1, remibId);
             stmt.executeUpdate();

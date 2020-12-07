@@ -29,7 +29,7 @@ public class MessageDao implements CRUD<Message> {
 		+ "values(?,?,?, ?);"; 
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, message.getFromEmp());
             stmt.setInt(2, message.getToEmp());
             stmt.setString(3, message.getMessage());
@@ -66,7 +66,7 @@ public class MessageDao implements CRUD<Message> {
 			
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
             stmt.setInt(1,toEmp);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
@@ -94,7 +94,7 @@ public class MessageDao implements CRUD<Message> {
 			
 			
 		try(Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,fromEmp);
             stmt.setInt(2,toEmp);
 
@@ -123,7 +123,7 @@ public class MessageDao implements CRUD<Message> {
         List<Message> allMessages = new ArrayList<>();
 	
 		try(Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,reqId);;
 
 			ResultSet rs = stmt.executeQuery();

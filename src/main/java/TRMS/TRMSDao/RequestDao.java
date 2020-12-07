@@ -35,7 +35,7 @@ public class RequestDao implements CRUD<Request> {
 		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?) RETURNING reqid;";
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setDate(1, Date.valueOf(req.getEventDate()));
 			stmt.setTime(2, Time.valueOf(req.getEventTime()));
             stmt.setString(3, req.getEventLoc());
@@ -67,7 +67,7 @@ public class RequestDao implements CRUD<Request> {
 		+ "values(?,?,?,?::eventtype,?,?,?,?,?,?::request_status,?,?) RETURNING reqid;";
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setDate(1, Date.valueOf(req.getEventDate()));
 			stmt.setTime(2, Time.valueOf(req.getEventTime()));
             stmt.setString(3, req.getEventLoc());
@@ -99,7 +99,7 @@ public class RequestDao implements CRUD<Request> {
         String sql = "Select * FROM requests where reqid = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,reqId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -132,7 +132,7 @@ public class RequestDao implements CRUD<Request> {
         List<Request> allReq = new ArrayList<>();
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,empId);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
@@ -167,7 +167,7 @@ public class RequestDao implements CRUD<Request> {
         List<Request> allReq = new ArrayList<>();
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,department);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
@@ -201,7 +201,7 @@ public class RequestDao implements CRUD<Request> {
         int empId;
         
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,reqId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -222,7 +222,7 @@ public class RequestDao implements CRUD<Request> {
 		String sql = "SELECT * FROM requests;";
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Request returnedReq = new Request(rs.getInt(1),
@@ -258,7 +258,7 @@ public class RequestDao implements CRUD<Request> {
             +"supervisor = ?, dept_head = ?, benco = ?, request_status = ?::request_status, additional_docs = ? "
             +" WHERE reqid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setDate(1, Date.valueOf(req.getEventDate()));
 			stmt.setTime(2, Time.valueOf(req.getEventTime()));
@@ -290,7 +290,7 @@ public class RequestDao implements CRUD<Request> {
             String sql = "UPDATE requests SET request_status = ?::request_status "
             +" WHERE reqid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, req.getCurrentStatus().toString());
             stmt.setInt(2, req.getReqId());
@@ -312,7 +312,7 @@ public class RequestDao implements CRUD<Request> {
             String sql = "UPDATE requests SET supervisor = ?::boolean"
             +" WHERE reqid = ?;";
             Boolean bool = req.getSupervisor();
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, bool.toString());
             stmt.setInt(2, req.getReqId());
@@ -334,7 +334,7 @@ public class RequestDao implements CRUD<Request> {
             String sql = "UPDATE requests SET dept_head = ?::boolean"
             +" WHERE reqid = ?;";
             Boolean bool = req.getDeptHead();
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, bool.toString());
             stmt.setInt(2, req.getReqId());
@@ -356,7 +356,7 @@ public class RequestDao implements CRUD<Request> {
             String sql = "UPDATE requests SET benco = ?::boolean"
             +" WHERE reqid = ?;";
             Boolean bool = req.getBenco();
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, bool.toString());
             stmt.setInt(2, req.getReqId());
@@ -376,7 +376,7 @@ public class RequestDao implements CRUD<Request> {
         try(Connection conn = connUtil.createConnection()){
             String sql = "DELETE FROM requests WHERE reqid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setInt(1, reqId);
             stmt.executeUpdate();

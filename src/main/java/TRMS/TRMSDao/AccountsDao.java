@@ -49,7 +49,7 @@ public class AccountsDao implements CRUD<Account> {
         String sql = "Select * from Accounts where empid = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1,empId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -72,7 +72,7 @@ public class AccountsDao implements CRUD<Account> {
         String sql = "Select empid from Accounts where username = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1,username);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -91,7 +91,7 @@ public class AccountsDao implements CRUD<Account> {
         String sql = "Select * from Accounts where username = ?;";
 
         try (Connection conn = connUtil.createConnection()){
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1,username);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -116,7 +116,7 @@ public class AccountsDao implements CRUD<Account> {
 		String sql = "SELECT * FROM accounts;";
 			
 		try(Connection conn = connUtil.createConnection()){
-			stmt = connUtil.createConnection().prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Account returnedAcct = new Account(rs.getString(1),
@@ -142,7 +142,7 @@ public class AccountsDao implements CRUD<Account> {
             String sql = "UPDATE accounts SET username = ?, passphrase= ?"
     		+ " WHERE empid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setString(1, acct.getUsername());
             stmt.setString(2, acct.getPassphrase());
@@ -163,7 +163,7 @@ public class AccountsDao implements CRUD<Account> {
         try(Connection conn = connUtil.createConnection()){
             String sql = "DELETE FROM accounts WHERE empid = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             
             stmt.setInt(1, empId);
             stmt.executeUpdate();
