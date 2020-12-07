@@ -1,11 +1,8 @@
 package TRMS.TRMS_Controller;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 import TRMS.TRMSDao.EmployeeDao;
 import TRMS.TRMSDao.MessageDao;
@@ -17,18 +14,17 @@ import TRMS.TRMSPojos.Message;
 import TRMS.TRMSPojos.Reimbursement;
 import TRMS.TRMSPojos.Reimbursement.status;
 import TRMS.TRMSPojos.Request;
-import TRMS.TRMSPojos.Supporting;
 import TRMS.TRMSPojos.Request.eventType;
 import TRMS.TRMS_Services.LogInImpl;
 import TRMS.TRMS_Services.MessDoc;
 import TRMS.TRMS_Services.RequestApproval;
 import io.javalin.http.Context;
-import io.javalin.http.UploadedFile;
+
 
 public class WebController {
     private LogInImpl currUser = new LogInImpl();
     private RequestApproval currReq = new RequestApproval();
-    private MessDoc other = new MessDoc();
+    //private MessDoc other = new MessDoc();
 
     public void callCreateEmployee(Context ctx) {
 
@@ -325,14 +321,14 @@ public class WebController {
 
     }
 
-    public void callUpload(Context ctx) throws IOException {
+    /* public void callUpload(Context ctx) throws IOException {
         UploadedFile file = ctx.uploadedFile("myFile");
         System.out.println(file);
         String fileType = ctx.formParam("fileType");
         int reqId = Integer.parseInt(ctx.formParam("reqId"));
-        Supporting sup = new Supporting(fileType, reqId);
+        //Supporting sup = new Supporting(fileType, reqId);
         //sup.setFile(file.getContent().readAllBytes());
         //other.Upload(sup);
-    }
+    } */
     
 }

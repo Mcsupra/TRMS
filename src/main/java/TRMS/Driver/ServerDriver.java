@@ -44,7 +44,7 @@ public interface ServerDriver {
         app.get("/send-message", ctx -> ctx.req.getRequestDispatcher("/send-message.html").forward(ctx.req, ctx.res));
         app.post("send-message", ctx -> web.callSendMessage(ctx));
         app.get("/upload/:id", ctx -> ctx.req.getRequestDispatcher("/upload.html").forward(ctx.req, ctx.res));
-        app.post("/upload", ctx -> web.callUpload(ctx));
+        //app.post("/upload", ctx -> web.callUpload(ctx));
 
         app.get("/reimbursement-approval", ctx -> {
             ctx.req.getRequestDispatcher("reimbursement-approval.html").forward(ctx.req, ctx.res);
